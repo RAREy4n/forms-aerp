@@ -69,7 +69,7 @@ const TEMPLATES = {
   fisica:   process.env.TEMPLATE_FISICA,
   juridica: process.env.TEMPLATE_JURIDICA,
 };
-const PLANO_LABEL = 'Plano Ouro — AERP;
+const PLANO_LABEL = 'Plano Ouro — AERP';
 
 const RD_TOKEN        = process.env.RD_TOKEN;
 const RD_PIPELINE_ID  = process.env.RD_PIPELINE_ID;
