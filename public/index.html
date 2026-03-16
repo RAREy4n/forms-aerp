@@ -1,0 +1,682 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>ACED Dourados × Sion Cooperativa — Plano Ouro</title>
+<meta name="description" content="Evento ACED Dourados — Economize até 40% na sua conta de energia com o Plano Ouro da Sion."/>
+<link rel="preconnect" href="https://fonts.googleapis.com"/>
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800;900&display=swap" rel="stylesheet"/>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"/>
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{
+  --navy:#1e2d4a;--blue:#384974;--blue2:#2d3a5a;--blue3:#4a5f8a;
+  --gold:#c9a84c;--gold2:#e8c96a;--silver:#8a9bb8;--silver2:#b8c4d4;
+  --green:#22c55e;--white:#fff;--dark:#111827;--text:#2f2f2f;
+  --muted:#6b7280;--border:#e5e7eb;--red:#ef4444;
+  --deep:#0a162a;--deep2:#0d1e35;--deep3:#111f38;
+  --cyan:#38bdf8;--cyan2:#7dd3fc;
+}
+html{scroll-behavior:smooth}
+body{
+  font-family:'Montserrat',sans-serif;
+  background:var(--deep);
+  color:#e2e8f0;
+  min-height:100vh;
+  overflow-x:hidden;
+}
+
+/* ── BG ─────────────────────────────────────────────────────────────────────── */
+.page-bg{
+  position:fixed;inset:0;z-index:0;
+  background:
+    linear-gradient(160deg,rgba(5,12,26,0.94) 0%,rgba(10,22,42,0.88) 50%,rgba(14,28,56,0.92) 100%),
+    url('/image1.jpg') center/cover no-repeat;
+}
+.page-grid{position:fixed;inset:0;z-index:0;background-image:linear-gradient(rgba(56,189,248,0.035) 1px,transparent 1px),linear-gradient(90deg,rgba(56,189,248,0.035) 1px,transparent 1px);background-size:48px 48px}
+.page-glow-top{position:fixed;top:-20%;right:-10%;width:600px;height:600px;border-radius:50%;background:radial-gradient(circle,rgba(56,189,248,0.055) 0%,transparent 65%);pointer-events:none;z-index:0}
+.page-glow-bot{position:fixed;bottom:-20%;left:-10%;width:500px;height:500px;border-radius:50%;background:radial-gradient(circle,rgba(201,168,76,0.045) 0%,transparent 65%);pointer-events:none;z-index:0}
+
+/* ── LAYOUT ──────────────────────────────────────────────────────────────────── */
+.page-wrap{position:relative;z-index:1;min-height:100vh;display:flex;flex-direction:column;align-items:center;justify-content:center;padding:32px 16px}
+.page-header{text-align:center;margin-bottom:32px}
+.event-tag{display:inline-flex;align-items:center;gap:8px;background:rgba(201,168,76,0.1);border:1px solid rgba(201,168,76,0.3);border-radius:50px;padding:6px 18px;margin-bottom:16px;font-size:10px;font-weight:700;color:var(--gold2);letter-spacing:2px;text-transform:uppercase;box-shadow:0 0 20px rgba(201,168,76,0.08)}
+.event-tag::before{content:'';width:6px;height:6px;border-radius:50%;background:var(--gold2);animation:blink 1.5s infinite;box-shadow:0 0 8px var(--gold)}
+@keyframes blink{0%,100%{opacity:1}50%{opacity:0.3}}
+.page-header h1{font-size:clamp(1.6rem,3.5vw,2.4rem);font-weight:900;color:#fff;line-height:1.15;letter-spacing:-0.03em;margin-bottom:8px}
+.page-header h1 .hl{background:linear-gradient(135deg,var(--gold),var(--gold2));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
+.page-header p{font-size:13px;color:rgba(255,255,255,0.45);line-height:1.6;max-width:420px;margin:0 auto}
+
+/* Ouro badge */
+.ouro-badge{display:inline-flex;align-items:center;gap:12px;background:linear-gradient(135deg,rgba(201,168,76,0.12),rgba(201,168,76,0.05));border:1px solid rgba(201,168,76,0.3);border-radius:14px;padding:12px 20px;margin:16px auto;box-shadow:0 0 30px rgba(201,168,76,0.1),inset 0 1px 0 rgba(255,255,255,0.06);position:relative;overflow:hidden}
+.ouro-badge::before{content:'';position:absolute;top:0;left:0;right:0;height:1px;background:linear-gradient(90deg,transparent,rgba(201,168,76,0.5),transparent)}
+.ouro-pct{font-size:2.2rem;font-weight:900;color:var(--gold2);text-shadow:0 0 20px rgba(201,168,76,0.5);line-height:1}
+.ouro-info{text-align:left}
+.ouro-info strong{display:block;font-size:11px;font-weight:800;color:var(--gold2);letter-spacing:1.5px;text-transform:uppercase;margin-bottom:2px}
+.ouro-info span{font-size:10px;color:rgba(255,255,255,0.35)}
+.ouro-icon{font-size:1.6rem;filter:drop-shadow(0 0 8px rgba(201,168,76,0.5))}
+
+/* ── CARD PRINCIPAL ─────────────────────────────────────────────────────────── */
+.form-card{
+  width:100%;max-width:560px;
+  background:linear-gradient(145deg,rgba(10,22,42,0.95) 0%,rgba(8,16,32,0.97) 100%);
+  border:1px solid rgba(56,189,248,0.18);border-radius:22px;
+  padding:32px;
+  box-shadow:0 0 0 1px rgba(56,189,248,0.07),0 24px 64px rgba(0,0,0,0.6),0 0 50px rgba(56,189,248,0.05);
+  position:relative;overflow:hidden;
+}
+.form-card::before{content:'';position:absolute;top:0;left:0;right:0;height:1px;background:linear-gradient(90deg,transparent,rgba(56,189,248,0.5),rgba(201,168,76,0.25),transparent);pointer-events:none}
+.form-card::after{content:'';position:absolute;top:0;left:-60%;width:35%;height:100%;background:linear-gradient(105deg,transparent,rgba(255,255,255,0.018),transparent);transform:skewX(-15deg);pointer-events:none}
+
+/* Stepper */
+.stepper{display:flex;align-items:center;gap:8px;margin-bottom:24px}
+.step-dot{width:28px;height:28px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:11px;font-weight:700;flex-shrink:0;transition:all 0.3s}
+.step-dot.active{background:linear-gradient(135deg,var(--gold),#a8761e);color:#1a0f00;box-shadow:0 0 16px rgba(201,168,76,0.4)}
+.step-dot.done{background:rgba(34,197,94,0.2);border:1px solid rgba(34,197,94,0.4);color:var(--green)}
+.step-dot.pending{background:rgba(255,255,255,0.05);border:1px solid rgba(255,255,255,0.08);color:rgba(255,255,255,0.25)}
+.step-line{flex:1;height:2px;border-radius:2px;background:rgba(255,255,255,0.06);transition:background 0.3s}
+.step-line.done{background:linear-gradient(90deg,var(--green),rgba(34,197,94,0.3))}
+.step-label{font-size:9px;font-weight:700;color:rgba(255,255,255,0.3);text-transform:uppercase;letter-spacing:1px;margin-left:6px;transition:color 0.3s}
+.step-label.active{color:var(--gold2)}
+
+/* Form fields */
+.f-section{font-size:9px;font-weight:700;color:rgba(56,189,248,0.55);text-transform:uppercase;letter-spacing:2px;margin:18px 0 10px;padding-bottom:6px;border-bottom:1px solid rgba(56,189,248,0.08)}
+.f-group{margin-bottom:12px}
+.f-label{display:block;font-size:9px;font-weight:700;color:rgba(56,189,248,0.5);text-transform:uppercase;letter-spacing:1.2px;margin-bottom:4px}
+.f-input{width:100%;border:1.5px solid rgba(56,189,248,0.12);border-radius:8px;padding:10px 12px;font-family:'Montserrat',sans-serif;font-size:13px;color:#e2e8f0;outline:none;transition:all 0.2s;background:rgba(255,255,255,0.04);box-shadow:inset 0 1px 3px rgba(0,0,0,0.25)}
+.f-input::placeholder{color:rgba(255,255,255,0.18)}
+.f-input:focus{border-color:rgba(56,189,248,0.48);background:rgba(56,189,248,0.05);box-shadow:0 0 0 3px rgba(56,189,248,0.08),inset 0 1px 3px rgba(0,0,0,0.2)}
+.f-input.locked{background:rgba(255,255,255,0.02);color:rgba(255,255,255,0.25);cursor:not-allowed;border-color:rgba(255,255,255,0.05)}
+.f-input.valid{border-color:rgba(34,197,94,0.5);background:rgba(34,197,94,0.05);box-shadow:0 0 10px rgba(34,197,94,0.08)}
+.f-input.invalid{border-color:rgba(239,68,68,0.5);background:rgba(239,68,68,0.05)}
+.f-hint{font-size:10px;font-weight:500;margin-top:2px}
+.f-hint.ok{color:var(--green)}.f-hint.err{color:#fca5a5}
+.f-row2{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.f-row3{display:grid;grid-template-columns:2fr 2fr 1fr;gap:10px}
+.f-currency{display:flex}
+.f-prefix{background:rgba(255,255,255,0.04);border:1.5px solid rgba(56,189,248,0.12);border-right:none;border-radius:8px 0 0 8px;padding:10px 10px;font-size:12px;font-weight:600;color:rgba(255,255,255,0.3)}
+.f-currency .f-input{border-radius:0 8px 8px 0}
+.f-upload{border:2px dashed rgba(56,189,248,0.15);border-radius:8px;padding:12px;text-align:center;cursor:pointer;transition:all 0.2s;font-size:11px;color:rgba(255,255,255,0.25);background:rgba(255,255,255,0.02)}
+.f-upload:hover{border-color:rgba(56,189,248,0.4);color:rgba(255,255,255,0.6);box-shadow:0 0 16px rgba(56,189,248,0.07)}
+.f-upload.has-file{border-color:var(--gold);border-style:solid;color:var(--gold2);box-shadow:0 0 16px rgba(201,168,76,0.1)}
+
+/* Tipo PF/PJ */
+.f-tipo{display:flex;border:1.5px solid rgba(56,189,248,0.15);border-radius:8px;overflow:hidden;margin-bottom:14px}
+.f-tipo-btn{flex:1;padding:9px;text-align:center;cursor:pointer;font-size:12px;font-weight:600;background:transparent;color:rgba(255,255,255,0.35);border:none;font-family:'Montserrat',sans-serif;transition:all 0.2s}
+.f-tipo-btn.active{background:linear-gradient(135deg,rgba(30,45,74,0.9),rgba(56,73,116,0.6));color:#fff;box-shadow:inset 0 1px 0 rgba(56,189,248,0.15)}
+
+/* Checkboxes */
+.f-check-group{display:flex;flex-direction:column;gap:7px;margin:14px 0}
+.f-check{display:flex;align-items:flex-start;gap:7px;cursor:pointer}
+.f-check input{width:14px;height:14px;margin-top:2px;accent-color:var(--cyan);flex-shrink:0}
+.f-check span{font-size:11px;color:rgba(255,255,255,0.4);line-height:1.5}
+.f-check a{color:var(--cyan2);text-decoration:none}
+
+/* Error */
+.f-err{display:none;background:rgba(239,68,68,0.1);border:1px solid rgba(239,68,68,0.3);border-radius:7px;padding:8px 12px;font-size:11px;color:#fca5a5;margin-bottom:10px;font-weight:500}
+
+/* Buttons */
+.btn-primary{
+  width:100%;
+  background:linear-gradient(135deg,#e8c96a 0%,var(--gold) 45%,#a8761e 100%);
+  color:#1a0f00;border:1px solid rgba(232,201,106,0.35);border-radius:9px;
+  padding:13px;font-family:'Montserrat',sans-serif;font-size:14px;font-weight:800;
+  cursor:pointer;transition:all 0.25s;margin-top:4px;
+  box-shadow:0 4px 24px rgba(201,168,76,0.35),0 0 0 1px rgba(232,201,106,0.2),inset 0 1px 0 rgba(255,255,255,0.2);
+  text-shadow:0 1px 2px rgba(168,118,30,0.3);
+  position:relative;overflow:hidden;letter-spacing:0.3px;
+}
+.btn-primary::after{content:'';position:absolute;top:0;left:-60%;width:40%;height:100%;background:linear-gradient(105deg,transparent,rgba(255,255,255,0.25),transparent);transform:skewX(-15deg);transition:left 0.5s}
+.btn-primary:hover::after{left:120%}
+.btn-primary:hover{box-shadow:0 8px 36px rgba(201,168,76,0.55),inset 0 1px 0 rgba(255,255,255,0.25);transform:translateY(-1px)}
+.btn-secondary{background:transparent;border:1.5px solid rgba(255,255,255,0.1);border-radius:8px;padding:10px;font-family:'Montserrat',sans-serif;font-size:12px;color:rgba(255,255,255,0.4);cursor:pointer;transition:all 0.2s;width:100%;margin-top:8px}
+.btn-secondary:hover{border-color:rgba(255,255,255,0.25);color:rgba(255,255,255,0.7)}
+
+/* Resumo */
+.resumo-card{background:rgba(56,189,248,0.03);border:1px solid rgba(56,189,248,0.12);border-radius:10px;padding:14px 16px;margin-bottom:14px}
+.resumo-title{font-size:10px;font-weight:700;color:rgba(255,255,255,0.5);text-transform:uppercase;letter-spacing:1.5px;margin-bottom:10px}
+.resumo-grid{display:grid;grid-template-columns:1fr 1fr;gap:7px 14px}
+.resumo-item .lbl{font-size:8px;font-weight:700;text-transform:uppercase;letter-spacing:1px;color:rgba(56,189,248,0.45);margin-bottom:2px}
+.resumo-item .val{font-size:12px;color:rgba(255,255,255,0.75);font-weight:500}
+.resumo-footer{border-top:1px solid rgba(56,189,248,0.08);margin-top:9px;padding-top:9px;display:flex;align-items:center;justify-content:space-between}
+
+/* Loading */
+.loading-state{display:none;flex-direction:column;align-items:center;justify-content:center;gap:14px;min-height:260px}
+.loader{width:40px;height:40px;border:3px solid rgba(56,189,248,0.1);border-top-color:var(--cyan);border-radius:50%;animation:spin 0.8s linear infinite;box-shadow:0 0 16px rgba(56,189,248,0.15)}
+@keyframes spin{to{transform:rotate(360deg)}}
+.loading-state p{font-size:10px;color:rgba(255,255,255,0.3);letter-spacing:2px;text-transform:uppercase}
+
+/* Success */
+.success-state{display:none;flex-direction:column;align-items:center;text-align:center;gap:12px;padding:32px 0}
+.success-icon{width:72px;height:72px;background:rgba(34,197,94,0.1);border:2px solid rgba(34,197,94,0.35);border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:2rem;box-shadow:0 0 30px rgba(34,197,94,0.15);animation:popIn 0.4s ease}
+@keyframes popIn{0%{transform:scale(0.5);opacity:0}70%{transform:scale(1.1)}100%{transform:scale(1);opacity:1}}
+.success-state h2{font-size:1.5rem;font-weight:800;color:#fff}
+.success-state p{font-size:13px;color:rgba(255,255,255,0.4);max-width:280px;line-height:1.6}
+
+/* Widget */
+#sion-container{min-height:650px;background:#fff;border-radius:8px;}
+#sion-container iframe{width:100%!important;min-width:100%!important;min-height:650px!important;display:block!important;border:none!important}
+.widget-wrap{border:1px solid rgba(56,189,248,0.12);border-radius:12px;overflow:hidden;margin-bottom:10px;background:#fff;}
+
+/* Trust bar */
+.trust-bar{display:flex;justify-content:center;gap:20px;flex-wrap:wrap;margin-top:20px}
+.trust-item{display:flex;align-items:center;gap:5px;font-size:10px;color:rgba(255,255,255,0.3);font-weight:500}
+.trust-item i{color:var(--cyan);font-size:11px}
+
+/* Footer */
+.page-footer{margin-top:24px;text-align:center;font-size:10px;color:rgba(255,255,255,0.18);line-height:1.6}
+.page-footer img{height:22px;filter:brightness(0) invert(1) opacity(0.3);margin-bottom:6px}
+
+/* WhatsApp */
+.wa-float{position:fixed;bottom:24px;right:24px;z-index:999;width:50px;height:50px;background:#25d366;border-radius:50%;display:flex;align-items:center;justify-content:center;box-shadow:0 4px 20px rgba(37,211,102,0.4);transition:transform 0.2s;text-decoration:none}
+.wa-float:hover{transform:scale(1.1)}
+
+@media(max-width:600px){.f-row2,.f-row3{grid-template-columns:1fr}.form-card{padding:22px 18px}}
+</style>
+</head>
+<body>
+
+<div class="page-bg"></div>
+<div class="page-grid"></div>
+<div class="page-glow-top"></div>
+<div class="page-glow-bot"></div>
+
+<a href="https://wa.me/5567927413962" class="wa-float" target="_blank">
+  <svg width="22" height="22" viewBox="0 0 24 24" fill="#fff"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z"/></svg>
+</a>
+
+<div class="page-wrap">
+
+  <!-- HEADER -->
+  <div class="page-header">
+    <div class="event-tag">📍 ACED Dourados · 17 de março</div>
+    <h1>Reduza sua conta de<br/>energia com a <span class="hl">Sion</span></h1>
+    <p>Cooperativa de energia solar — sem investimento, sem obras. Desconto direto na sua fatura todo mês.</p>
+    <div style="display:flex;justify-content:center;margin-top:16px">
+      <div class="ouro-badge">
+        <div class="ouro-icon">🥇</div>
+        <div>
+          <div class="ouro-pct">40%</div>
+        </div>
+        <div class="ouro-info">
+          <strong>Plano Ouro</strong>
+         <!--<span>de desconto estimado</span>-->
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- CARD -->
+  <div class="form-card" id="main-card">
+
+    <!-- STEPPER -->
+    <div class="stepper">
+      <div class="step-dot active" id="dot1">1</div>
+      <span class="step-label active" id="lbl1">Seus dados</span>
+      <div class="step-line" id="line1"></div>
+      <div class="step-dot pending" id="dot2">2</div>
+      <span class="step-label" id="lbl2">Endereço</span>
+      <div class="step-line" id="line2"></div>
+      <div class="step-dot pending" id="dot3">3</div>
+      <span class="step-label" id="lbl3">Assinatura</span>
+    </div>
+
+    <!-- STEP 1 -->
+    <div id="step1">
+      <div class="f-section">Informações de Contato</div>
+      <div id="err1" class="f-err"></div>
+      <div class="f-group">
+        <label class="f-label">Nome Completo</label>
+        <input type="text" id="a-nome" class="f-input" placeholder="Seu nome completo"/>
+      </div>
+      <div class="f-row2">
+        <div class="f-group">
+          <label class="f-label">WhatsApp</label>
+          <input type="text" id="a-tel" class="f-input" placeholder="(00) 00000-0000" maxlength="15" oninput="maskTel(this)"/>
+        </div>
+        <div class="f-group">
+          <label class="f-label">E-mail</label>
+          <input type="email" id="a-email" class="f-input" placeholder="seu@email.com"/>
+        </div>
+      </div>
+      <div class="f-section">Consumo de Energia</div>
+      <div class="f-group">
+        <label class="f-label">Valor médio da fatura mensal</label>
+        <div class="f-currency">
+          <span class="f-prefix">R$</span>
+          <input type="text" id="a-fatura" class="f-input" placeholder="0,00" oninput="maskCurrency(this)"/>
+        </div>
+      </div>
+      <div class="f-group">
+        <label class="f-label">Fatura de energia <span style="font-weight:400;text-transform:none;letter-spacing:0;font-size:10px;color:rgba(255,255,255,0.2)">(opcional)</span></label>
+        <div class="f-upload" id="upload-zone" onclick="document.getElementById('a-file').click()">
+          <input type="file" id="a-file" accept=".pdf,.jpg,.jpeg,.png" style="display:none" onchange="onFile(this)"/>
+          <div id="upload-txt">📎 <strong style="color:#93c5fd">Clique para anexar</strong> PDF, JPG ou PNG</div>
+        </div>
+      </div>
+      <button class="btn-primary" onclick="goStep2()">Continuar <i class="fas fa-arrow-right" style="font-size:12px;margin-left:4px"></i></button>
+      <p style="font-size:9px;color:rgba(255,255,255,0.18);text-align:center;margin-top:8px;line-height:1.5">Ao continuar você concorda que a Sion entre em contato por telefone ou e-mail.</p>
+    </div>
+
+    <!-- STEP 2 -->
+    <div id="step2" style="display:none">
+      <div class="f-tipo">
+        <button class="f-tipo-btn active" id="btn-fisica" onclick="setTipo('fisica')">Pessoa Física</button>
+        <button class="f-tipo-btn" id="btn-juridica" onclick="setTipo('juridica')">Pessoa Jurídica</button>
+      </div>
+
+      <!-- PF -->
+      <div id="campos-fisica">
+        <div class="f-row2">
+          <div class="f-group">
+            <label class="f-label">CPF <span id="cpf-hint" class="f-hint"></span></label>
+            <input type="text" id="a-cpf" class="f-input" placeholder="000.000.000-00" maxlength="14" oninput="maskCPF(this)" onblur="validarCPF()"/>
+          </div>
+          <div class="f-group">
+            <label class="f-label">Apelido <span style="font-weight:400;text-transform:none;letter-spacing:0;font-size:10px">(opc.)</span></label>
+            <input type="text" id="a-apelido" class="f-input" placeholder="Como prefere ser chamado"/>
+          </div>
+        </div>
+        <div class="f-section">Endereço da Instalação</div>
+        <div class="f-row3">
+          <div class="f-group">
+            <label class="f-label">CEP</label>
+            <input type="text" id="a-cep" class="f-input" placeholder="00000-000" maxlength="9" oninput="maskCEP(this)" onblur="buscarCEP('f')"/>
+            <div class="f-hint" id="cep-hint-f"></div>
+          </div>
+          <div class="f-group">
+            <label class="f-label">Cidade</label>
+            <input type="text" id="a-cidade" class="f-input locked" readonly placeholder="—"/>
+          </div>
+          <div class="f-group">
+            <label class="f-label">UF</label>
+            <input type="text" id="a-uf" class="f-input locked" readonly placeholder="—"/>
+          </div>
+        </div>
+        <div class="f-group">
+          <label class="f-label">Logradouro</label>
+          <input type="text" id="a-end" class="f-input locked" readonly placeholder="—"/>
+        </div>
+        <div class="f-row2">
+          <div class="f-group">
+            <label class="f-label">Número</label>
+            <input type="text" id="a-num" class="f-input" placeholder="123"/>
+          </div>
+          <div class="f-group">
+            <label class="f-label">Bairro</label>
+            <input type="text" id="a-bairro" class="f-input locked" readonly placeholder="—"/>
+          </div>
+        </div>
+        <div class="f-row2">
+          <div class="f-group">
+            <label class="f-label">Complemento <span style="font-weight:400;text-transform:none;letter-spacing:0;font-size:10px">(opc.)</span></label>
+            <input type="text" id="a-comp" class="f-input" placeholder="Sala, apto..."/>
+          </div>
+          <div class="f-group">
+            <label class="f-label">UC (Unidade Consumidora)</label>
+            <input type="text" id="a-uc" class="f-input" placeholder="Nº na conta de luz"/>
+          </div>
+        </div>
+      </div>
+
+      <!-- PJ -->
+      <div id="campos-juridica" style="display:none">
+        <div class="f-group">
+          <label class="f-label">Razão Social</label>
+          <input type="text" id="a-razao" class="f-input" placeholder="Empresa LTDA"/>
+        </div>
+        <div class="f-group">
+      <label class="f-label">Nome Fantasia <span style="font-weight:400;text-transform:none;letter-spacing:0;font-size:10px;color:rgba(255,255,255,0.2)">(opcional)</span></label>
+      <input type="text" id="a-fantasia" class="f-input" placeholder="Nome Fantasia da empresa"/>
+      </div>
+        <div class="f-group">
+          <label class="f-label">CNPJ <span id="cnpj-hint" class="f-hint"></span></label>
+          <input type="text" id="a-cnpj" class="f-input" placeholder="00.000.000/0000-00" maxlength="18" oninput="maskCNPJ(this)" onblur="validarCNPJ()"/>
+        </div>
+        <div class="f-section">Endereço da Instalação</div>
+        <div class="f-row3">
+          <div class="f-group">
+            <label class="f-label">CEP</label>
+            <input type="text" id="a-cepj" class="f-input" placeholder="00000-000" maxlength="9" oninput="maskCEP(this)" onblur="buscarCEP('j')"/>
+            <div class="f-hint" id="cep-hint-j"></div>
+          </div>
+          <div class="f-group">
+            <label class="f-label">Cidade</label>
+            <input type="text" id="a-cidadej" class="f-input locked" readonly placeholder="—"/>
+          </div>
+          <div class="f-group">
+            <label class="f-label">UF</label>
+            <input type="text" id="a-ufj" class="f-input locked" readonly placeholder="—"/>
+          </div>
+        </div>
+        <div class="f-group">
+          <label class="f-label">Logradouro</label>
+          <input type="text" id="a-endj" class="f-input locked" readonly placeholder="—"/>
+        </div>
+        <div class="f-row2">
+          <div class="f-group">
+            <label class="f-label">Número</label>
+            <input type="text" id="a-numj" class="f-input" placeholder="123"/>
+          </div>
+          <div class="f-group">
+            <label class="f-label">Bairro</label>
+            <input type="text" id="a-bairroj" class="f-input locked" readonly placeholder="—"/>
+          </div>
+        </div>
+        <div class="f-row2">
+          <div class="f-group">
+            <label class="f-label">Complemento <span style="font-weight:400;text-transform:none;letter-spacing:0;font-size:10px">(opc.)</span></label>
+            <input type="text" id="a-compj" class="f-input" placeholder="Sala, apto..."/>
+          </div>
+          <div class="f-group">
+            <label class="f-label">UC (Unidade Consumidora)</label>
+            <input type="text" id="a-ucj" class="f-input" placeholder="Nº na conta de luz"/>
+          </div>
+        </div>
+      </div>
+
+      <div class="f-check-group">
+        <label class="f-check"><input type="checkbox" id="chk-termos"/><span>Li e concordo com os <a href="#">Termos de Adesão e Política de Privacidade</a> da Sion.</span></label>
+        <label class="f-check"><input type="checkbox" id="chk-assin"/><span>Autorizo o uso de assinatura eletrônica para formalização deste contrato.</span></label>
+      </div>
+      <div id="err2" class="f-err"></div>
+      <div style="display:flex;gap:9px">
+        <button class="btn-secondary" style="width:auto;padding:10px 18px;margin-top:4px" onclick="backStep1()">← Voltar</button>
+        <button class="btn-primary" style="margin-top:4px" onclick="gerarContrato()">Revisar e Assinar</button>
+      </div>
+    </div>
+
+    <!-- LOADING -->
+    <div id="step-loading" class="loading-state">
+      <div class="loader"></div>
+      <p>Gerando contrato...</p>
+    </div>
+
+    <!-- STEP 3 — ASSINATURA -->
+    <div id="step3" style="display:none">
+      <div class="resumo-card" id="resumo-box">
+        <div class="resumo-title">⊙ Resumo da Adesão</div>
+        <div class="resumo-grid">
+          <div class="resumo-item"><div class="lbl">Titular</div><div class="val" id="r-nome">—</div></div>
+          <div class="resumo-item"><div class="lbl">Plano</div><div class="val" style="color:var(--gold2)">🥇 Plano Ouro — 40%</div></div>
+          <div class="resumo-item"><div class="lbl">Documento</div><div class="val" id="r-doc">—</div></div>
+          <div class="resumo-item" style="grid-column:1/-1"><div class="lbl">Endereço</div><div class="val" id="r-end">—</div></div>
+        </div>
+        <div class="resumo-footer">
+          <span style="font-size:11px;font-weight:600;color:rgba(255,255,255,0.7)">ACED Dourados · 17 de março</span>
+          <span style="background:rgba(201,168,76,0.15);color:var(--gold2);font-size:10px;font-weight:700;padding:3px 10px;border-radius:20px;border:1px solid rgba(201,168,76,0.3)">~40% estimado*</span>
+        </div>
+      </div>
+      <div class="widget-wrap">
+        <div id="sion-container"></div>
+      </div>
+      <div style="text-align:center;padding-top:6px">
+        <button onclick="backStep2()" style="background:none;border:none;color:rgba(255,255,255,0.3);font-size:11px;cursor:pointer;text-decoration:underline;font-family:'Montserrat',sans-serif">Voltar para edição</button>
+      </div>
+    </div>
+
+    <!-- SUCCESS -->
+    <div id="step-success" class="success-state">
+      <div class="success-icon">✓</div>
+      <h2>Contrato <span style="color:var(--green)">assinado!</span></h2>
+      <p>Obrigado! Você receberá uma cópia por e-mail em breve. Bem-vindo à Sion.</p>
+    </div>
+
+  </div>
+
+  <!-- Trust -->
+  <div class="trust-bar">
+    <div class="trust-item"><i class="fas fa-shield-alt"></i> Sem investimento</div>
+    <div class="trust-item"><i class="fas fa-bolt"></i> Sem obras</div>
+    <div class="trust-item"><i class="fas fa-check-circle"></i> 1200+ cooperados</div>
+    <div class="trust-item"><i class="fas fa-lock"></i> Assinatura digital segura</div>
+  </div>
+
+  <!-- Footer -->
+  <div class="page-footer">
+    <div><img src="https://cooperativasion.com.br/wp-content/uploads/2024/04/cropped-1.png" alt="Sion"/></div>
+    Sion Cooperativa de Energia · CNPJ: 35.710.362/0001-50<br/>
+    Rua Dr. Manoel Pedro, 365, 21º andar · Curitiba – PR<br/>
+    <span style="font-size:9px;opacity:0.6">*Valores são estimativas. Sujeito ao contrato.</span>
+  </div>
+
+</div>
+
+<script src="https://cdn-public-library.clicksign.com/embedded/embedded.min-1.0.0.js"></script>
+<script>
+(function(){
+'use strict';
+
+const API = 'https://forms-aced.onrender.com'; // ← trocar pela URL do Render
+
+let tipoAtual = 'fisica';
+let cpfValido = false;
+let cnpjValido = false;
+let widget = null;
+
+// ── Stepper ───────────────────────────────────────────────────────────────────
+function setStep(n) {
+  ['step1','step2','step3','step-loading','step-success'].forEach(id => {
+    document.getElementById(id).style.display = 'none';
+  });
+  const map = {1:'step1', 2:'step2', 3:'step3', 'loading':'step-loading', 'success':'step-success'};
+  const el = document.getElementById(map[n]);
+  el.style.display = (n==='loading'||n==='success') ? 'flex' : 'block';
+
+  [1,2,3].forEach(i => {
+    const dot = document.getElementById('dot'+i);
+    const lbl = document.getElementById('lbl'+i);
+    const line = document.getElementById('line'+i);
+    if(i < n) {
+      dot.className = 'step-dot done'; dot.innerHTML = '✓';
+      lbl.className = 'step-label';
+      if(line) line.className = 'step-line done';
+    } else if(i === n) {
+      dot.className = 'step-dot active'; dot.textContent = i;
+      lbl.className = 'step-label active';
+    } else {
+      dot.className = 'step-dot pending'; dot.textContent = i;
+      lbl.className = 'step-label';
+    }
+  });
+}
+
+// ── Máscaras ──────────────────────────────────────────────────────────────────
+window.maskTel = el => { let v=el.value.replace(/\D/g,''); v=v.replace(/(\d{2})(\d)/,'($1) $2').replace(/(\d{5})(\d)/,'$1-$2'); el.value=v; };
+window.maskCurrency = el => { let v=el.value.replace(/\D/g,''); v=(parseInt(v||'0')/100).toLocaleString('pt-BR',{minimumFractionDigits:2,maximumFractionDigits:2}); el.value=v; };
+window.maskCPF  = el => { let v=el.value.replace(/\D/g,''); v=v.replace(/(\d{3})(\d)/,'$1.$2').replace(/(\d{3})(\d)/,'$1.$2').replace(/(\d{3})(\d{1,2})$/,'$1-$2'); el.value=v; cpfValido=false; };
+window.maskCNPJ = el => { let v=el.value.replace(/\D/g,''); v=v.replace(/(\d{2})(\d)/,'$1.$2').replace(/(\d{3})(\d)/,'$1.$2').replace(/(\d{3})(\d)/,'$1/$2').replace(/(\d{4})(\d{1,2})$/,'$1-$2'); el.value=v; cnpjValido=false; };
+window.maskCEP  = el => { let v=el.value.replace(/\D/g,''); v=v.replace(/(\d{5})(\d{1,3})$/,'$1-$2'); el.value=v; };
+
+window.onFile = input => {
+  const zone = document.getElementById('upload-zone');
+  const txt  = document.getElementById('upload-txt');
+  if(input.files && input.files[0]){
+    zone.className='f-upload has-file';
+    txt.innerHTML='✅ <strong>'+input.files[0].name+'</strong>';
+  }
+};
+
+// ── Validações CPF/CNPJ ───────────────────────────────────────────────────────
+function digCPF(d,l){let s=0;for(let i=0;i<l;i++)s+=parseInt(d[i])*(l+1-i);let r=(s*10)%11;return(r===10||r===11)?0:r;}
+window.validarCPF = function(){
+  const el=document.getElementById('a-cpf'),h=document.getElementById('cpf-hint');
+  const d=el.value.replace(/\D/g,'');h.className='f-hint';
+  if(d.length<11){el.className='f-input';cpfValido=false;return;}
+  if(/^(\d)\1+$/.test(d)){el.className='f-input invalid';h.className='f-hint err';h.textContent='✗ Inválido';cpfValido=false;return;}
+  if(digCPF(d,9)===parseInt(d[9])&&digCPF(d,10)===parseInt(d[10])){el.className='f-input valid';h.className='f-hint ok';h.textContent='✓ Válido';cpfValido=true;}
+  else{el.className='f-input invalid';h.className='f-hint err';h.textContent='✗ Inválido';cpfValido=false;}
+};
+
+function digCNPJ(d,l){const p=l===12?[5,4,3,2,9,8,7,6,5,4,3,2]:[6,5,4,3,2,9,8,7,6,5,4,3,2];let s=0;for(let i=0;i<l;i++)s+=parseInt(d[i])*p[i];let r=s%11;return r<2?0:11-r;}
+window.validarCNPJ = function(){
+  const el=document.getElementById('a-cnpj'),h=document.getElementById('cnpj-hint');
+  const d=el.value.replace(/\D/g,'');h.className='f-hint';
+  if(d.length<14){el.className='f-input';cnpjValido=false;return;}
+  if(/^(\d)\1+$/.test(d)){el.className='f-input invalid';h.className='f-hint err';h.textContent='✗ Inválido';cnpjValido=false;return;}
+  if(digCNPJ(d,12)===parseInt(d[12])&&digCNPJ(d,13)===parseInt(d[13])){el.className='f-input valid';h.className='f-hint ok';h.textContent='✓ Válido';cnpjValido=true;}
+  else{el.className='f-input invalid';h.className='f-hint err';h.textContent='✗ Inválido';cnpjValido=false;}
+};
+
+// ── CEP ───────────────────────────────────────────────────────────────────────
+window.buscarCEP = async function(t){
+  const isFis=t==='f';
+  const cepEl=document.getElementById(isFis?'a-cep':'a-cepj');
+  const hint=document.getElementById(isFis?'cep-hint-f':'cep-hint-j');
+  const cep=cepEl.value.replace(/\D/g,'');
+  if(cep.length!==8)return;
+  const ids=isFis
+    ?{cidade:'a-cidade',uf:'a-uf',bairro:'a-bairro',end:'a-end'}
+    :{cidade:'a-cidadej',uf:'a-ufj',bairro:'a-bairroj',end:'a-endj'};
+  hint.className='f-hint';hint.textContent='Buscando...';
+  try{
+    const data=await fetch('https://viacep.com.br/ws/'+cep+'/json/').then(r=>r.json());
+    if(data.erro){hint.className='f-hint err';hint.textContent='✗ CEP não encontrado';cepEl.className='f-input invalid';return;}
+    document.getElementById(ids.cidade).value=data.localidade||'';
+    document.getElementById(ids.uf).value=data.uf||'';
+    document.getElementById(ids.bairro).value=data.bairro||'';
+    document.getElementById(ids.end).value=data.logradouro||'';
+    hint.className='f-hint ok';hint.textContent='✓ '+data.logradouro;
+    cepEl.className='f-input valid';
+  }catch(e){hint.className='f-hint err';hint.textContent='✗ Erro ao buscar';cepEl.className='f-input invalid';}
+};
+
+// ── Tipo PF/PJ ────────────────────────────────────────────────────────────────
+window.setTipo = function(t){
+  tipoAtual=t;
+  document.getElementById('btn-fisica').className='f-tipo-btn'+(t==='fisica'?' active':'');
+  document.getElementById('btn-juridica').className='f-tipo-btn'+(t==='juridica'?' active':'');
+  document.getElementById('campos-fisica').style.display=t==='fisica'?'block':'none';
+  document.getElementById('campos-juridica').style.display=t==='juridica'?'block':'none';
+};
+
+function showErr(id,msg){const el=document.getElementById(id);el.textContent=msg;el.style.display='block';}
+function hideErr(id){document.getElementById(id).style.display='none';}
+
+// ── STEP 1 → STEP 2 ───────────────────────────────────────────────────────────
+window.goStep2 = async function(){
+  const nome  = document.getElementById('a-nome').value.trim();
+  const email = document.getElementById('a-email').value.trim();
+  const tel   = document.getElementById('a-tel').value.trim();
+  const fat   = document.getElementById('a-fatura').value.trim();
+  const fileInput = document.getElementById('a-file');
+  hideErr('err1');
+
+  if(!nome)                        return showErr('err1','⚠ Informe seu nome completo.');
+  if(nome.split(/\s+/).length < 2) return showErr('err1','⚠ Informe nome e sobrenome.');
+  if(!email||!email.includes('@')) return showErr('err1','⚠ Informe um e-mail válido.');
+
+  // Envia lead para RD em background
+  try{
+    const fd=new FormData();
+    fd.append('nome',nome);fd.append('email',email);
+    fd.append('telefone',tel);fd.append('valorFatura',fat);
+    if(fileInput.files&&fileInput.files[0]) fd.append('fatura',fileInput.files[0]);
+    fetch(API+'/api/rd-lead',{method:'POST',body:fd})
+      .then(r=>r.json())
+      .then(d=>{ if(d.rd_deal_id) window._dealId=d.rd_deal_id; console.log('[RD]',d); })
+      .catch(e=>console.error('[RD Error]',e));
+  }catch(e){}
+
+  // Preenche nome no step 2
+  setStep(2);
+  window.scrollTo({top:0,behavior:'smooth'});
+};
+
+window.backStep1 = function(){ setStep(1); };
+window.backStep2 = function(){ if(widget) widget.unmount(); setStep(2); };
+// ── STEP 2 → GERAR CONTRATO ───────────────────────────────────────────────────
+window.gerarContrato = async function(){
+  const nome  = document.getElementById('a-nome').value.trim();
+  const email = document.getElementById('a-email').value.trim();
+  const tel   = document.getElementById('a-tel').value.trim();
+  hideErr('err2');
+  if(!document.getElementById('chk-termos').checked)
+    return showErr('err2','⚠ Aceite os Termos de Adesão para continuar.');
+  if(!document.getElementById('chk-assin').checked)
+    return showErr('err2','⚠ Autorize o uso de assinatura eletrônica.');
+  let payload = { tipo:tipoAtual, nome, email, telefone:tel };
+  if(tipoAtual==='fisica'){
+    const cpf=document.getElementById('a-cpf').value.trim();
+    const cep=document.getElementById('a-cep').value.trim();
+    if(!cpf)       return showErr('err2','⚠ Informe o CPF.');
+    if(!cpfValido) return showErr('err2','⚠ CPF inválido.');
+    if(!cep||!document.getElementById('a-cep').className.includes('valid'))
+                   return showErr('err2','⚠ Informe um CEP válido.');
+    if(!document.getElementById('a-num').value.trim())
+                   return showErr('err2','⚠ Informe o número do endereço.');
+    payload={...payload,cpf,cep,
+      numero:      document.getElementById('a-num').value,
+      cidade:      document.getElementById('a-cidade').value,
+      uf:          document.getElementById('a-uf').value,
+      bairro:      document.getElementById('a-bairro').value,
+      endereco:    document.getElementById('a-end').value,
+      complemento: document.getElementById('a-comp').value,
+      uc:          document.getElementById('a-uc').value,
+    };
+  } else {
+    const razao=document.getElementById('a-razao').value.trim();
+    const cnpj =document.getElementById('a-cnpj').value.trim();
+    const cep  =document.getElementById('a-cepj').value.trim();
+    if(!razao)      return showErr('err2','⚠ Informe a Razão Social.');
+    if(!cnpj)       return showErr('err2','⚠ Informe o CNPJ.');
+    if(!cnpjValido) return showErr('err2','⚠ CNPJ inválido.');
+    if(!cep||!document.getElementById('a-cepj').className.includes('valid'))
+                    return showErr('err2','⚠ Informe um CEP válido.');
+    if(!document.getElementById('a-numj').value.trim())
+                    return showErr('err2','⚠ Informe o número do endereço.');
+    payload={...payload,razaoSocial:razao,nomeFantasia:document.getElementById('a-fantasia').value,cnpj,cep,
+      numero:      document.getElementById('a-numj').value,
+      cidade:      document.getElementById('a-cidadej').value,
+      uf:          document.getElementById('a-ufj').value,
+      bairro:      document.getElementById('a-bairroj').value,
+      endereco:    document.getElementById('a-endj').value,
+      complemento: document.getElementById('a-compj').value,
+      uc:          document.getElementById('a-ucj').value,
+    };
+  }
+  setStep('loading');
+  try{
+    if(window._dealId) payload.rd_deal_id=window._dealId;
+    const res  = await fetch(API+'/api/assinar',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify(payload)});
+    const data = await res.json();
+    if(!res.ok||!data.request_signature_key) throw new Error(data.error||'Erro ao gerar contrato.');
+    document.getElementById('r-nome').textContent=nome;
+    document.getElementById('r-doc').textContent=tipoAtual==='fisica'
+      ? document.getElementById('a-cpf').value
+      : document.getElementById('a-cnpj').value;
+    const endV=tipoAtual==='fisica'
+      ?[document.getElementById('a-end').value,document.getElementById('a-num').value,document.getElementById('a-cidade').value,document.getElementById('a-uf').value]
+      :[document.getElementById('a-endj').value,document.getElementById('a-numj').value,document.getElementById('a-cidadej').value,document.getElementById('a-ufj').value];
+    document.getElementById('r-end').textContent=endV[0]+', '+endV[1]+' — '+endV[2]+'/'+endV[3];
+    setStep(3);
+    carregarWidget(data.request_signature_key);
+  }catch(err){
+    setStep(2);
+    showErr('err2','✗ '+err.message);
+  }
+};
+// ── Widget Clicksign ──────────────────────────────────────────────────────────
+function carregarWidget(key){
+  if(widget) widget.unmount();
+  widget=new Clicksign(key);
+  widget.endpoint='https://app.clicksign.com';
+  widget.origin=window.location.origin;
+  widget.mount('sion-container');
+  function fixIframe(){
+    const frames=document.getElementById('sion-container').querySelectorAll('iframe');
+    frames.forEach(f=>{f.style.cssText='width:100%!important;min-width:100%!important;min-height:650px!important;height:650px!important;display:block!important;border:none!important;';});
+    if(!frames.length) setTimeout(fixIframe,400);
+  }
+  [600,1500,3000].forEach(t=>setTimeout(fixIframe,t));
+  widget.on('signed',()=>{ if(widget) widget.unmount(); setStep('success'); });
+  widget.on('resized',h=>{ const a=Math.max(h,650); const c=document.getElementById('sion-container'); c.style.height=a+'px'; c.querySelectorAll('iframe').forEach(f=>{f.style.height=a+'px';f.style.minHeight=a+'px';}); });
+}
+
+// Init
+setStep(1);
+})();
+</script>
+</body>
+</html>
